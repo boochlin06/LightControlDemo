@@ -61,7 +61,6 @@ public class LightControlActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utility.setWindow(this);
         this.setContentView(R.layout.activity_light_control);
         ButterKnife.bind(this);
         remoteService = RemoteService.getInstance();
@@ -76,16 +75,6 @@ public class LightControlActivity extends AppCompatActivity {
         mCameraView.setCvCameraViewListener(new CameraFrameProcessor());
     }
 
-    //    nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
-//    <string name="color_angry">"紅色“</string>
-//    <string name="color_confuse">"淡黃色“</string>
-//    <string name="color_contempt">"紫棕色“</string>
-//    <string name="color_disgust">"綠色“</string>
-//    <string name="color_fear">"紫色“</string>
-//    <string name="color_happy">"黃色“</string>
-//    <string name="color_sad">"藍色“</string>
-//    <string name="color_surprise">"橘色“</string>
-//    <string name="color_neutral">"白色“</string>
     private void initBtnColor() {
         LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         for (int i = 0; i < emotionColorArray.length; i++) {
@@ -260,7 +249,7 @@ public class LightControlActivity extends AppCompatActivity {
                     }
                 });
             }
-            Log.d(TAG, "total used time:" + (System.currentTimeMillis() - startTime));
+            Log.d(TAG, "total process time:" + (System.currentTimeMillis() - startTime));
             return cameraFrame;
         }
     }
@@ -282,7 +271,6 @@ public class LightControlActivity extends AppCompatActivity {
         // four emotion for edu 0 normal 1 passion 2 upset 3 confuse
         // nine -> four : 0,1,3,5,7 -> 2 ; 2 -> 1 ; 6 -> 0; 4,8 -> 3
         int firstAt = -1;
-        int secondAt = 0;
         float max = 0;
         for (int i = 0; i < emotionData.length / 2; i++) {
 

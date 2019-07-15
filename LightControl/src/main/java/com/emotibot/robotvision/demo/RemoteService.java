@@ -48,7 +48,7 @@ public class RemoteService {
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, colorString);
         Request request = new Request.Builder()
-                .url(BFOP_URL)
+                .url("http://poc1.emotibot.com:8141/v1/openapi")
                 .post(body)
                 .addHeader("appid", APP_ID)
                 .addHeader("userid", USER_ID)
