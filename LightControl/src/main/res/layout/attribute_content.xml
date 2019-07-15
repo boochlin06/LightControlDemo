@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- gender -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_gender"/>
+
+        <TextView
+            android:id="@+id/attribute_gender_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- age -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_age"/>
+
+        <TextView
+            android:id="@+id/attribute_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+
+    <!-- beauty_score -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_beauty_score"/>
+
+        <TextView
+            android:id="@+id/attribute_beauty_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+
+    <!-- beard -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_beard"/>
+
+        <TextView
+            android:id="@+id/attribute_beard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+    <!-- hair_color -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_hair_color"/>
+
+        <TextView
+            android:id="@+id/attribute_hair_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+
+    <!-- hair_style -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_hair_style"/>
+
+        <TextView
+            android:id="@+id/attribute_hair_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+
+    <!-- hair_length -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_hair_length"/>
+
+        <TextView
+            android:id="@+id/attribute_hair_length"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+
+    <!-- eyeglasses -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_title"
+            android:text="@string/attribute_title_eyeglasses"/>
+
+        <TextView
+            android:id="@+id/attribute_eyeglasses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/attribute_text_value"
+            />
+    </TableRow>
+
+</TableLayout>

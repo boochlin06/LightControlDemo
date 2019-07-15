@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <org.opencv.android.JavaCameraView xmlns:opencv="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/camera_impl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        opencv:camera_id="front" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="2dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnRed"
+            android:layout_margin="8dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/btnBlue"
+            android:layout_margin="8dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_dark" />
+
+        <Button
+            android:id="@+id/btnYellow"
+            android:layout_margin="8dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="#ffff00" />
+
+        <Button
+            android:id="@+id/btnGreen"
+            android:layout_width="50dp"
+            android:layout_margin="8dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_dark" />
+        <!--<TextView-->
+            <!--android:id="@+id/txtStatus"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:elevation="10dp"-->
+            <!--tools:text="2123" />-->
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtRawData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        tools:text="emotion:" />
+
+</RelativeLayout>

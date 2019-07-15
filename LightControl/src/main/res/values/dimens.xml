@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="robot_block_title_height">70dp</dimen>
+    <dimen name="robot_block_title_font_size">20sp</dimen>
+
+    <dimen name="chat_block_margin_left_right">32dp</dimen>
+
+    <dimen name="two_line_text_title_font_size">14sp</dimen>
+    <dimen name="two_line_text_content_font_size">32sp</dimen>
+
+
+    <dimen name="two_line_text_title_margin_left">5dp</dimen>
+    <dimen name="two_line_text_title_margin_bottom">2dp</dimen>
+    <dimen name="two_line_text_separator_margin_top">5dp</dimen>
+    <dimen name="two_line_text_corners_radius">10dp</dimen>
+
+
+    <dimen name="robot_animation_block_width_height">300dp</dimen>
+
+
+    <dimen name="robot_camera_view_width">120dp</dimen>
+    <dimen name="robot_camera_view_height">120dp</dimen>
+    <dimen name="robot_camera_margin_top">-54dp</dimen>
+    <dimen name="robot_camera_margin_right">15dp</dimen>
+    <dimen name="attribute_margin_left">8dp</dimen>
+
+    <dimen name="camera_btn_container_width_height">50dp</dimen>
+    <dimen name="camera_btn_container_margin_bottom_right">10dp</dimen>
+
+    <integer name="max_camera_width">960</integer>
+    <integer name="max_camera_height">720</integer>
+    <integer name="min_camera_width">640</integer>
+    <integer name="min_camera_height">480</integer>
+
+
+    <dimen name="setting_item_margin">10dp</dimen>
+    <dimen name="setting_title_text_font_size">16sp</dimen>
+    <dimen name="setting_value_text_font_size">12sp</dimen>
+
+
+    <dimen name="attribute_title_text_font_size">10sp</dimen>
+    <dimen name="attribute_value_text_font_size">12sp</dimen>
+
+
+    <dimen name="image_title_text_title_font_size">10sp</dimen>
+
+</resources>

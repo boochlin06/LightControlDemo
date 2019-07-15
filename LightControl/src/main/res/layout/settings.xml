@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/robot_block_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/robot_block_title_height"
+        android:gravity="center"
+        android:textSize="@dimen/robot_block_title_font_size"
+        android:background="@color/title_bar_background"
+        android:textColor="@android:color/white"
+        android:text="@string/app_name" />
+
+    <!-- Body start -->
+    <LinearLayout
+        android:layout_below="@+id/robot_block_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/setting_item_margin"
+        android:layout_marginLeft="@dimen/setting_item_margin">
+        <include
+            android:id="@+id/wake_up_gaze_time_threshold_container"
+            layout="@layout/setting_seek_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_margin"
+            android:layout_marginBottom="@dimen/setting_item_margin"
+             />
+
+        <include
+            android:id="@+id/sleep_gaze_time_threshold_container"
+            layout="@layout/setting_seek_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_margin"
+            android:layout_marginBottom="@dimen/setting_item_margin"
+            />
+
+
+        <!--- Emotion Threshold -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <include
+                android:id="@+id/emotion_angry_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+            <include
+                android:id="@+id/emotion_disgust_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <include
+                android:id="@+id/emotion_happy_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+            <include
+                android:id="@+id/emotion_sad_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <include
+                android:id="@+id/emotion_surprise_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+            <include
+                android:id="@+id/emotion_fear_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <include
+                android:id="@+id/emotion_neutral_threshold_container"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+            <include
+                android:id="@+id/dummy"
+                android:visibility="invisible"
+                layout="@layout/setting_seek_item"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin"
+                android:layout_marginBottom="@dimen/setting_item_margin"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- Body start -->
+
+
+    <!--- footer ok cancel -->
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/robot_block_title_height"
+        android:background="@color/title_bar_background"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:divider="?android:listDivider">
+        <TextView
+            android:id="@+id/cancel_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/robot_block_title_font_size"
+            android:background="@color/title_bar_background"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/cancel_btn"/>
+
+        <TextView
+            android:id="@+id/ok_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/robot_block_title_font_size"
+            android:background="@color/title_bar_background"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/ok_btn"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
