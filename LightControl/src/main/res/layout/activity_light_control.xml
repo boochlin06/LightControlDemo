@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <org.opencv.android.JavaCameraView xmlns:opencv="http://schemas.android.com/apk/res-auto"
         android:id="@+id/camera_impl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         opencv:camera_id="front" />
 
     <LinearLayout
@@ -16,49 +21,365 @@
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="2dp"
-        android:orientation="horizontal">
-
-        <!--<Button-->
-            <!--android:id="@+id/btnRed"-->
-            <!--android:layout_margin="8dp"-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@android:color/holo_red_dark" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/btnBlue"-->
-            <!--android:layout_margin="8dp"-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@android:color/holo_blue_dark" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/btnYellow"-->
-            <!--android:layout_margin="8dp"-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="#ffff00" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/btnGreen"-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_margin="8dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@android:color/holo_green_dark" />-->
-        <!--<TextView-->
-            <!--android:id="@+id/txtStatus"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:elevation="10dp"-->
-            <!--tools:text="2123" />-->
-
+        android:orientation="horizontal"
+        android:visibility="gone">
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/txtRawData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        tools:text="emotion:" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg">
+
+        <RelativeLayout
+            android:id="@+id/relEmotionNone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/md_white_1000"
+                android:text="@string/no_face_hint"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relEmotionNormal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="70dp"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:id="@+id/llinEmotionNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgFirst"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="380dp"
+                        android:src="@drawable/group_0_angry" />
+
+                    <TextView
+                        android:id="@+id/txtFirst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="25dp"
+                        android:text="生氣 5%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="32sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgSecond"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="400dp"
+                        android:src="@drawable/group_1_disgust" />
+
+                    <TextView
+                        android:id="@+id/txtSecond"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:text="厭惡 5%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgThird"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="400dp"
+                        android:src="@drawable/group_2_happy" />
+
+                    <TextView
+                        android:id="@+id/txtThird"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:text="開心 5%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnRightChange"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="240dp"
+                android:background="@drawable/btn_right"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relEmotionDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btnLeftChange"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/btn_left" />
+
+
+                <LinearLayout
+                    android:id="@+id/llinEmotionLine1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/btnLeftChange"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgAngry"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_0_angry" />
+
+                    <TextView
+                        android:id="@+id/txtAngry"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="生氣 5%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imgDigust"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_1_disgust" />
+
+                    <TextView
+                        android:id="@+id/txtDigust"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="厭惡 5%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imgSad"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_3_sad" />
+
+                    <TextView
+                        android:id="@+id/txtSad"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="傷心 5%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llinEmotionLine2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/llinEmotionLine1"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/btnLeftChange"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgConfuse"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_8_confused" />
+
+                    <TextView
+                        android:id="@+id/txtConfuse"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="困惑 2%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imgFear"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_5_fear" />
+
+                    <TextView
+                        android:id="@+id/txtFear"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="害怕 2%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imgSurprise"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_4_surprise" />
+
+                    <TextView
+                        android:id="@+id/txtSurprise"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="驚訝 2%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llinEmotionLine3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/llinEmotionLine2"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/btnLeftChange"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgContempt"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_7_contempt" />
+
+                    <TextView
+                        android:id="@+id/txtContempt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="鄙視 2%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imgHappy"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_2_happy" />
+
+                    <TextView
+                        android:id="@+id/txtHappy"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="開心 2%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imgNeutral"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/group_6_neutral" />
+
+                    <TextView
+                        android:id="@+id/txtNeutral"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="中性 122%"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="200dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imgBulb"
+                android:layout_width="25dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/group_light_bulb_angry"
+                tools:src="@drawable/group_light_bulb_angry" />
+
+            <TextView
+                android:id="@+id/txtBulbSignal"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text=" ON"
+                android:textColor="@color/md_white_1000" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtRawData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            tools:text="emotion:" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/company_logo" />
 </RelativeLayout>

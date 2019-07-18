@@ -8,14 +8,16 @@
 
     <string name="emotion_title">Emotion</string>
     <string name="emotion_error">Error</string>
-    <string name="emotion_angry">Angry</string>
-    <string name="emotion_disgust">Disgust</string>
-    <string name="emotion_happy">Happy</string>
-    <string name="emotion_sad">Sad</string>
-    <string name="emotion_surprise">Surprise</string>
-    <string name="emotion_fear">Fear</string>
-    <string name="emotion_neutral">Neutral</string>
+    <string name="emotion_angry">生氣</string>
+    <string name="emotion_disgust">厭惡</string>
+    <string name="emotion_happy">開心</string>
+    <string name="emotion_sad">傷心</string>
+    <string name="emotion_surprise">驚訝</string>
+    <string name="emotion_fear">恐懼</string>
+    <string name="emotion_neutral">中性</string>
+    <string name="emotion_contempt">鄙視</string>
 
+    <string name="emotion_confuse">困惑</string>
 
     <string name="emotion_recording_result">Recording result</string>
 
@@ -105,15 +107,25 @@
         <item>@string/color_confuse</item>
     </string-array>
 
-    <string name="color_angry">"紅色“</string>
-    <string name="color_confuse">"淡黃色“</string>
-    <string name="color_contempt">"紫棕色“</string>
-    <string name="color_disgust">"綠色“</string>
-    <string name="color_fear">"紫色“</string>
-    <string name="color_happy">"黃色“</string>
-    <string name="color_sad">"藍色“</string>
-    <string name="color_surprise">"橘色“</string>
-    <string name="color_neutral">"白色“</string>
+    <string name="color_angry">红色</string>
+        
+    <string name="color_confuse">淡黄色</string>
+        
+    <string name="color_contempt">紫棕色</string>
+        
+    <string name="color_disgust">绿色</string>
+        
+    <string name="color_fear">紫色</string>
+        
+    <string name="color_happy">黄色</string>
+        
+    <string name="color_sad">蓝色</string>
+        
+    <string name="color_surprise">橘色</string>
+        
+    <string name="color_neutral">蓝色</string>
+
+    <string name="no_face_hint">請將臉部靠近照相機</string>
 
     <string name="rawData_emotion_bar_summary">
 Angry:%1.2f\n
