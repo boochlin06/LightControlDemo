@@ -25,6 +25,18 @@
     <color name="btn_background_blue_light">#77DDFF</color>
     <color name="btn_background_green_dark">#227700</color>
     <color name="btn_background_green_light">#99FF33</color>
+    <color name="text_signal">#434343</color>
+    <color name="text_none">#2E2E2E</color>
+    <color name="line_divider">#E3E3E3</color>
+    <color name="text_title">#191919</color>
+    <color name="text_score">#4C86CE</color>
+    <color name="line_emotion_divider">#E1E1E1</color>
+    <color name="layout_bg">#FCFCFC</color>
+    <color name="btn_active">#A1C8F1 </color>
+    <color name="btn_border">#A1C8F1 </color>
+    <color name="btn_actice_txt">#0F76FE</color>
+    <color name="btn_inactive">#d8e8fc</color>
+
 
 
     <!--md color define-->

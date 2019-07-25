@@ -2,6 +2,7 @@ package com.emotibot.robotvision.demo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -78,11 +79,11 @@ public class LightControlActivity extends AppCompatActivity {
     @BindView(R.id.llinEmotionNormal)
     LinearLayout llinEmotionNormal;
     @BindView(R.id.btnRightChange)
-    ImageButton btnRightChange;
+    Button btnRightChange;
     @BindView(R.id.relEmotionNormal)
     RelativeLayout relEmotionNormal;
     @BindView(R.id.btnLeftChange)
-    ImageButton btnLeftChange;
+    Button btnLeftChange;
     @BindView(R.id.imgAngry)
     ImageView imgAngry;
     @BindView(R.id.txtAngry)
@@ -95,8 +96,8 @@ public class LightControlActivity extends AppCompatActivity {
     ImageView imgSad;
     @BindView(R.id.txtSad)
     TextView txtSad;
-    @BindView(R.id.llinEmotionLine1)
-    LinearLayout llinEmotionLine1;
+    //    @BindView(R.id.llinEmotionLine1)
+//    LinearLayout llinEmotionLine1;
     @BindView(R.id.imgConfuse)
     ImageView imgConfuse;
     @BindView(R.id.txtConfuse)
@@ -109,8 +110,8 @@ public class LightControlActivity extends AppCompatActivity {
     ImageView imgSurprise;
     @BindView(R.id.txtSurprise)
     TextView txtSurprise;
-    @BindView(R.id.llinEmotionLine2)
-    LinearLayout llinEmotionLine2;
+    //    @BindView(R.id.llinEmotionLine2)
+//    LinearLayout llinEmotionLine2;
     @BindView(R.id.imgContempt)
     ImageView imgContempt;
     @BindView(R.id.txtContempt)
@@ -123,10 +124,10 @@ public class LightControlActivity extends AppCompatActivity {
     ImageView imgNeutral;
     @BindView(R.id.txtNeutral)
     TextView txtNeutral;
-    @BindView(R.id.llinEmotionLine3)
-    LinearLayout llinEmotionLine3;
+    //    @BindView(R.id.llinEmotionLine3)
+//    LinearLayout llinEmotionLine3;
     @BindView(R.id.relEmotionDetail)
-    RelativeLayout relEmotionDetail;
+    LinearLayout relEmotionDetail;
     @BindView(R.id.imgBulb)
     ImageButton imgBulb;
     @BindView(R.id.txtBulbSignal)
@@ -135,6 +136,48 @@ public class LightControlActivity extends AppCompatActivity {
     ImageView imgLogo;
     @BindView(R.id.relEmotionNone)
     RelativeLayout relEmotionNone;
+    @BindView(R.id.camera_impl)
+    JavaCameraView cameraImpl;
+    @BindView(R.id.txtScoreFirst)
+    TextView txtScoreFirst;
+    @BindView(R.id.txtScoreSecond)
+    TextView txtScoreSecond;
+    @BindView(R.id.txtScoreThird)
+    TextView txtScoreThird;
+    @BindView(R.id.imgFourth)
+    ImageView imgFourth;
+    @BindView(R.id.txtFourth)
+    TextView txtFourth;
+    @BindView(R.id.txtScoreFourth)
+    TextView txtScoreFourth;
+    @BindView(R.id.imgFifth)
+    ImageView imgFifth;
+    @BindView(R.id.txtFifth)
+    TextView txtFifth;
+    @BindView(R.id.txtScoreFifth)
+    TextView txtScoreFifth;
+    @BindView(R.id.txtScoreAngry)
+    TextView txtScoreAngry;
+
+    @BindView(R.id.txtScoreConfuse)
+    TextView txtScoreConfuse;
+
+    @BindView(R.id.txtScoreContempt)
+    TextView txtScoreContempt;
+    @BindView(R.id.txtScoreDigust)
+    TextView txtScoreDigust;
+    @BindView(R.id.txtScoreFear)
+    TextView txtScoreFear;
+    @BindView(R.id.txtScoreHappy)
+    TextView txtScoreHappy;
+    @BindView(R.id.txtScoreSad)
+    TextView txtScoreSad;
+    @BindView(R.id.txtScoreSurprise)
+    TextView txtScoreSurprise;
+    @BindView(R.id.txtScoreNeutral)
+    TextView txtScoreNeutral;
+    @BindView(R.id.txtTitle)
+    TextView txtTitle;
 
     private Mat mCameraBuffer = null;
 
@@ -185,8 +228,15 @@ public class LightControlActivity extends AppCompatActivity {
         relEmotionDetail.setVisibility(View.VISIBLE);
         relEmotionNormal.setVisibility(View.INVISIBLE);
         relEmotionNone.setVisibility(View.INVISIBLE);
-        btnRightChange.setVisibility(View.INVISIBLE);
+        btnRightChange.setVisibility(View.VISIBLE);
         btnLeftChange.setVisibility(View.VISIBLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            btnRightChange.setBackground(getDrawable(R.drawable.right_active));
+            btnRightChange.setTextColor(getColor(R.color.btn_actice_txt));
+            btnLeftChange.setBackground(getDrawable(R.drawable.left_inactive));
+            btnLeftChange.setTextColor(getColor(R.color.text_signal));
+
+        }
 
     }
 
@@ -195,7 +245,14 @@ public class LightControlActivity extends AppCompatActivity {
         relEmotionNormal.setVisibility(View.VISIBLE);
         relEmotionNone.setVisibility(View.INVISIBLE);
         btnRightChange.setVisibility(View.VISIBLE);
-        btnLeftChange.setVisibility(View.INVISIBLE);
+        btnLeftChange.setVisibility(View.VISIBLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            btnLeftChange.setBackground(getDrawable(R.drawable.left_active));
+            btnLeftChange.setTextColor(getColor(R.color.btn_actice_txt));
+            btnRightChange.setBackground(getDrawable(R.drawable.right_inactive));
+            btnRightChange.setTextColor(getColor(R.color.text_signal));
+
+        }
 
     }
 
@@ -281,6 +338,17 @@ public class LightControlActivity extends AppCompatActivity {
         private int index;
         private float value;
         private int imgColor;
+        private int viewScoreId;
+
+        public int getViewScoreId() {
+            return viewScoreId;
+        }
+
+        public void setViewScoreId(int viewScoreId) {
+            this.viewScoreId = viewScoreId;
+        }
+
+
 
         public int getImgBulbColor() {
             return imgBulbColor;
@@ -367,54 +435,63 @@ public class LightControlActivity extends AppCompatActivity {
             switch (i) {
                 case 0:
                     data.setViewId(R.id.txtAngry);
+                    data.setViewScoreId(R.id.txtScoreAngry);
                     data.setTextEmotion(getString(R.string.emotion_angry));
                     data.setImgColor(R.drawable.group_0_angry);
                     data.setImgBulbColor(R.drawable.group_light_bulb_angry);
                     break;
                 case 1:
                     data.setViewId(R.id.txtDigust);
+                    data.setViewScoreId(R.id.txtScoreDigust);
                     data.setTextEmotion(getString(R.string.emotion_disgust));
                     data.setImgBulbColor(R.drawable.group_light_bulb_disgust);
                     data.setImgColor(R.drawable.group_1_disgust);
                     break;
                 case 2:
                     data.setViewId(R.id.txtHappy);
+                    data.setViewScoreId(R.id.txtScoreHappy);
                     data.setTextEmotion(getString(R.string.emotion_happy));
                     data.setImgBulbColor(R.drawable.group_light_bulb_happy);
                     data.setImgColor(R.drawable.group_2_happy);
                     break;
                 case 3:
                     data.setViewId(R.id.txtSad);
+                    data.setViewScoreId(R.id.txtScoreSad);
                     data.setTextEmotion(getString(R.string.emotion_sad));
                     data.setImgBulbColor(R.drawable.group_light_bulb_sad);
                     data.setImgColor(R.drawable.group_3_sad);
                     break;
                 case 4:
                     data.setViewId(R.id.txtSurprise);
+                    data.setViewScoreId(R.id.txtScoreSurprise);
                     data.setTextEmotion(getString(R.string.emotion_surprise));
                     data.setImgBulbColor(R.drawable.group_light_bulb_surprise);
                     data.setImgColor(R.drawable.group_4_surprise);
                     break;
                 case 5:
                     data.setViewId(R.id.txtFear);
+                    data.setViewScoreId(R.id.txtScoreFear);
                     data.setTextEmotion(getString(R.string.emotion_fear));
                     data.setImgBulbColor(R.drawable.group_light_bulb_fear);
                     data.setImgColor(R.drawable.group_5_fear);
                     break;
                 case 6:
                     data.setViewId(R.id.txtNeutral);
+                    data.setViewScoreId(R.id.txtScoreNeutral);
                     data.setTextEmotion(getString(R.string.emotion_neutral));
                     data.setImgBulbColor(R.drawable.group_light_bulb_neutral);
                     data.setImgColor(R.drawable.group_6_neutral);
                     break;
                 case 7:
                     data.setViewId(R.id.txtContempt);
+                    data.setViewScoreId(R.id.txtScoreContempt);
                     data.setTextEmotion(getString(R.string.emotion_contempt));
                     data.setImgColor(R.drawable.group_7_contempt);
                     data.setImgBulbColor(R.drawable.group_light_bulb_contempt);
                     break;
                 case 8:
                     data.setViewId(R.id.txtConfuse);
+                    data.setViewScoreId(R.id.txtScoreConfuse);
                     data.setTextEmotion(getString(R.string.emotion_confuse));
                     data.setImgColor(R.drawable.group_8_confused);
                     data.setImgBulbColor(R.drawable.group_light_bulb_confused);
@@ -422,23 +499,37 @@ public class LightControlActivity extends AppCompatActivity {
 
             }
             String value = String.format("% 4d", ((int) (data.getValue())));
-            String s = data.getTextEmotion() + value + "%";
+            String s = data.getTextEmotion();
             ((TextView) findViewById(data.getViewId())).setText(s);
+            ((TextView) findViewById(data.getViewScoreId())).setText(value+"%");
             emotionDataList.add(data);
         }
         Collections.sort(emotionDataList);
-        for (int i = 0; i < 3; i++) {
 
-            String s = emotionDataList.get(i).getTextEmotion() + " " + ((int) (emotionDataList.get(i).getValue()) + "%");
+        for (int i = 0; i < 5; i++) {
+
+            String s = emotionDataList.get(i).getTextEmotion();
+            String value = ((int) (emotionDataList.get(i).getValue()) + "%");
             if (i == 0) {
                 txtFirst.setText(s);
+                txtScoreFirst.setText(value);
                 imgFirst.setImageDrawable(ContextCompat.getDrawable(this, emotionDataList.get(i).getImgColor()));
             } else if (i == 1) {
                 txtSecond.setText(s);
+                txtScoreSecond.setText(value);
                 imgSecond.setImageDrawable(ContextCompat.getDrawable(this, emotionDataList.get(i).getImgColor()));
-            } else {
+            } else if (i == 2) {
                 txtThird.setText(s);
+                txtScoreThird.setText(value);
                 imgThird.setImageDrawable(ContextCompat.getDrawable(this, emotionDataList.get(i).getImgColor()));
+            } else if (i == 3) {
+                txtFourth.setText(s);
+                txtScoreFourth.setText(value);
+                imgFourth.setImageDrawable(ContextCompat.getDrawable(this, emotionDataList.get(i).getImgColor()));
+            } else {
+                txtFifth.setText(s);
+                txtScoreFifth.setText(value);
+                imgFifth.setImageDrawable(ContextCompat.getDrawable(this, emotionDataList.get(i).getImgColor()));
             }
         }
 
@@ -453,14 +544,14 @@ public class LightControlActivity extends AppCompatActivity {
             }
             txtBulbSignal.setText("ON");
         }
-        emotionToControlService(emotionDataList.get(0).index);
+//        emotionToControlService(emotionDataList.get(0).index);
     }
 
 
     private String emotionToControlService(int emotionIndex) {
         // nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
         String colorString = "{ \"text\": \"" + "客厅的灯调成" + emotionColorArray[emotionIndex] + "\", \"customInfo\": { \"deviceId\": \"1\" } }";
-        Log.d(TAG,"colorString:"+colorString);
+        Log.d(TAG, "colorString:" + colorString);
         remoteLightControlService.sendControlMessage(colorString, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

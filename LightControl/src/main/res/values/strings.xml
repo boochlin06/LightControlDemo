@@ -125,7 +125,9 @@
         
     <string name="color_neutral">蓝色</string>
 
-    <string name="no_face_hint">請將臉部靠近照相機</string>
+    <string name="no_face_hint">請將臉部移至鏡頭內</string>
+
+    <string name="title">智能情绪灯控</string>
 
     <string name="rawData_emotion_bar_summary">
 Angry:%1.2f\n
@@ -138,5 +140,7 @@ Neutral:%7.2f\n
 Contempt:%8.2f\n
 Confused:%9.2f\n
     </string>
+    <string name="btn_emotion_rank">情绪排行</string>
+    <string name="btn_emotion_detail">全部情绪</string>
 
 </resources>

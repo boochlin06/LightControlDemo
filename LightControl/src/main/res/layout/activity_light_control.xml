@@ -27,11 +27,11 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="340dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/bg">
+        android:background="#F2FFFFFF">
 
         <RelativeLayout
             android:id="@+id/relEmotionNone"
@@ -44,53 +44,76 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textColor="@color/md_white_1000"
+                android:height="90dp"
                 android:text="@string/no_face_hint"
-                android:textSize="24sp" />
+                android:textColor="@color/text_none"
+                android:textSize="17sp" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relEmotionNormal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="320dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="70dp"
             android:visibility="invisible">
 
             <LinearLayout
                 android:id="@+id/llinEmotionNormal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgFirst"
                         android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="380dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_0_angry" />
 
                     <TextView
                         android:id="@+id/txtFirst"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgFirst"
                         android:text="生氣 5%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="32sp" />
-                </LinearLayout>
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtScoreFirst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
@@ -100,22 +123,43 @@
                         android:id="@+id/imgSecond"
                         android:layout_width="50dp"
                         android:layout_height="25dp"
-                        android:layout_marginStart="400dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_1_disgust" />
 
                     <TextView
                         android:id="@+id/txtSecond"
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgSecond"
                         android:text="厭惡 5%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/txtScoreSecond"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
@@ -124,245 +168,673 @@
                     <ImageView
                         android:id="@+id/imgThird"
                         android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:layout_marginStart="400dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_2_happy" />
 
                     <TextView
                         android:id="@+id/txtThird"
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgThird"
                         android:text="開心 5%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
-                </LinearLayout>
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreThird"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgFourth"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/group_2_happy" />
+
+                    <TextView
+                        android:id="@+id/txtFourth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgFourth"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreFourth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgFifth"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/group_2_happy" />
+
+                    <TextView
+                        android:id="@+id/txtFifth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgFifth"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreFifth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
 
             </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnRightChange"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="240dp"
-                android:background="@drawable/btn_right"
-                android:visibility="visible" />
+
         </RelativeLayout>
 
-        <RelativeLayout
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="290dp">
+            <Button
+                android:id="@+id/btnLeftChange"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/left_active"
+                android:textColor="@color/btn_actice_txt"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/btn_emotion_rank"/>
+
+            <Button
+                android:id="@+id/btnRightChange"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/right_inactive"
+                android:textColor="@color/text_signal"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/btn_emotion_detail"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:id="@+id/relEmotionDetail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:layout_height="320dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="70dp"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="2">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="210dp"
-                android:layout_marginTop="25dp"
-                android:gravity="center">
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/btnLeftChange"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/btn_left" />
-
-
-                <LinearLayout
-                    android:id="@+id/llinEmotionLine1"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/btnLeftChange"
+                    android:layout_marginTop="0dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgAngry"
                         android:layout_width="50dp"
-                        android:layout_height="15dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_0_angry" />
 
                     <TextView
                         android:id="@+id/txtAngry"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgAngry"
                         android:text="生氣 5%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/imgDigust"
-                        android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/group_1_disgust" />
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/txtDigust"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
-                        android:text="厭惡 5%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                        android:id="@+id/txtScoreAngry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/imgSad"
-                        android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/group_3_sad" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
 
-                    <TextView
-                        android:id="@+id/txtSad"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
-                        android:text="傷心 5%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/llinEmotionLine2"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/llinEmotionLine1"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/btnLeftChange"
+                    android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgConfuse"
                         android:layout_width="50dp"
-                        android:layout_height="15dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_8_confused" />
 
                     <TextView
                         android:id="@+id/txtConfuse"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
-                        android:text="困惑 2%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
-
-                    <ImageView
-                        android:id="@+id/imgFear"
-                        android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/group_5_fear" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgConfuse"
+                        android:text="厭惡 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/txtFear"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
-                        android:text="害怕 2%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                        android:id="@+id/txtScoreConfuse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
 
-                    <ImageView
-                        android:id="@+id/imgSurprise"
-                        android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/group_4_surprise" />
+                </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/txtSurprise"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
-                        android:text="驚訝 2%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llinEmotionLine3"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/llinEmotionLine2"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/btnLeftChange"
+                    android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgContempt"
                         android:layout_width="50dp"
-                        android:layout_height="15dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_7_contempt" />
 
                     <TextView
                         android:id="@+id/txtContempt"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="鄙視 2%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgContempt"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreContempt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgDigust"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/group_1_disgust" />
+
+                    <TextView
+                        android:id="@+id/txtDigust"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgDigust"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreDigust"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgFear"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/group_5_fear" />
+
+                    <TextView
+                        android:id="@+id/txtFear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgFear"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreFear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgHappy"
                         android:layout_width="50dp"
-                        android:layout_height="15dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_2_happy" />
 
                     <TextView
                         android:id="@+id/txtHappy"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="開心 2%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgHappy"
+                        android:text="生氣 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreHappy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgSad"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/group_3_sad" />
+
+                    <TextView
+                        android:id="@+id/txtSad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgSad"
+                        android:text="厭惡 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreSad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgSurprise"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/group_4_surprise" />
+
+                    <TextView
+                        android:id="@+id/txtSurprise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgSurprise"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtScoreSurprise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imgNeutral"
                         android:layout_width="50dp"
-                        android:layout_height="15dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/group_6_neutral" />
 
                     <TextView
                         android:id="@+id/txtNeutral"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="中性 122%"
-                        android:textColor="@color/md_white_1000"
-                        android:textSize="20sp" />
+                        android:layout_marginLeft="0dp"
+                        android:layout_toRightOf="@id/imgNeutral"
+                        android:text="開心 5%"
+                        android:textColor="@color/text_none"
+                        android:textSize="18sp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/txtScoreNeutral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="0dp"
+                        android:text="5%"
+                        android:textColor="@color/text_score"
+                        android:textSize="18sp" />
+                </RelativeLayout>
 
-            </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/line_emotion_divider" />
 
 
-        </RelativeLayout>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="200dp"
-            android:gravity="center"
-            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/circle_bg" />
 
             <ImageButton
                 android:id="@+id/imgBulb"
-                android:layout_width="25dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="40dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/group_light_bulb_angry"
                 tools:src="@drawable/group_light_bulb_angry" />
 
             <TextView
                 android:id="@+id/txtBulbSignal"
-                android:layout_width="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_below="@id/imgBulb"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:text=" ON"
-                android:textColor="@color/md_white_1000" />
-        </LinearLayout>
+                android:textColor="@color/text_signal"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+                android:layout_toLeftOf="@id/txtTitle"
+                android:src="@drawable/company_icon" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/title"
+                android:textColor="@color/text_title"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/txtRawData"
@@ -381,5 +853,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="0dp"
+        android:visibility="gone"
         app:srcCompat="@drawable/company_logo" />
 </RelativeLayout>
