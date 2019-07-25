@@ -167,6 +167,7 @@ public class LightControlActivity extends AppCompatActivity {
         IntelliEyeCoreManager.getInstance().init(this, false, true, false, false, false);
         mCameraView.setCvCameraViewListener(new CameraFrameProcessor());
         showEmotionNormalView();
+//        btnBlock.setVisibility(View.VISIBLE);
     }
 
     @OnClick({R.id.btnLeftChange, R.id.btnRightChange})
@@ -268,7 +269,7 @@ public class LightControlActivity extends AppCompatActivity {
                     }
                 });
             }
-            Log.d(TAG, "total process time:" + (System.currentTimeMillis() - startTime));
+//            Log.d(TAG, "total process time:" + (System.currentTimeMillis() - startTime));
             return cameraFrame;
         }
     }
@@ -459,6 +460,7 @@ public class LightControlActivity extends AppCompatActivity {
     private String emotionToControlService(int emotionIndex) {
         // nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
         String colorString = "{ \"text\": \"" + "客厅的灯调成" + emotionColorArray[emotionIndex] + "\", \"customInfo\": { \"deviceId\": \"1\" } }";
+        Log.d(TAG,"colorString:"+colorString);
         remoteLightControlService.sendControlMessage(colorString, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -480,7 +482,13 @@ public class LightControlActivity extends AppCompatActivity {
 
                 } else {
                     String str = response.body().string();
-                    Log.i(TAG, "network---" + str);
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+                    Log.d(TAG, "network---" + str);
                 }
 
             }
