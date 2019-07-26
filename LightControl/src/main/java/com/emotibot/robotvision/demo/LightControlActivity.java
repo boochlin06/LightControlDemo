@@ -349,7 +349,6 @@ public class LightControlActivity extends AppCompatActivity {
         }
 
 
-
         public int getImgBulbColor() {
             return imgBulbColor;
         }
@@ -501,7 +500,7 @@ public class LightControlActivity extends AppCompatActivity {
             String value = String.format("% 4d", ((int) (data.getValue())));
             String s = data.getTextEmotion();
             ((TextView) findViewById(data.getViewId())).setText(s);
-            ((TextView) findViewById(data.getViewScoreId())).setText(value+"%");
+            ((TextView) findViewById(data.getViewScoreId())).setText(value + "%");
             emotionDataList.add(data);
         }
         Collections.sort(emotionDataList);
@@ -544,7 +543,7 @@ public class LightControlActivity extends AppCompatActivity {
             }
             txtBulbSignal.setText("ON");
         }
-//        emotionToControlService(emotionDataList.get(0).index);
+        emotionToControlService(emotionDataList.get(0).index);
     }
 
 

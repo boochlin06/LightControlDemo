@@ -42,7 +42,7 @@ public class RemoteLightControlService {
     }
 
     public void sendControlMessage(String colorString, okhttp3.Callback callback) {
-        Log.d("test", "send message:" + colorString);
+        Log.d("RemoteLightControlService", "send message:" + colorString);
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("application/json");
