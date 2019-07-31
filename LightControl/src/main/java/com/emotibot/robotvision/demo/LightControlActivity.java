@@ -183,6 +183,7 @@ public class LightControlActivity extends AppCompatActivity {
 
     private StringBuilder stringBuilder = null;
     private String[] emotionColorArray;
+    private String[] emotionDeviceArray;
     private RemoteLightControlService remoteLightControlService;
 
     public static final long LIGHT_CHANGE_GAP = 3000;
@@ -201,6 +202,7 @@ public class LightControlActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         remoteLightControlService = RemoteLightControlService.getInstance();
         emotionColorArray = getResources().getStringArray(R.array.emotion_color_list);
+        emotionDeviceArray = getResources().getStringArray(R.array.emotion_device_list);
 
         stringBuilder = new StringBuilder();
         mCameraView = (JavaCameraView) findViewById(R.id.camera_impl);
@@ -313,10 +315,10 @@ public class LightControlActivity extends AppCompatActivity {
             Mat cameraFrame = inputFrame.rgba();
             flip(cameraFrame, cameraFrame, 1);
             Imgproc.cvtColor(cameraFrame, mCameraBuffer, Imgproc.COLOR_RGBA2BGR);
-            flip(mCameraBuffer, mCameraBuffer, 1);
+//            flip(mCameraBuffer, mCameraBuffer, 1);
 
             final InferResult mInferResult = IntelliEyeCoreManager.getInstance().processFrame(mCameraBuffer, cameraFrame
-                    , true);
+                    , false);
             if (System.currentTimeMillis() - prevProcessorTime > LIGHT_CHANGE_GAP) {
                 prevProcessorTime = System.currentTimeMillis();
                 runOnUiThread(new Runnable() {
@@ -543,9 +545,51 @@ public class LightControlActivity extends AppCompatActivity {
             }
             txtBulbSignal.setText("ON");
         }
-        emotionToControlService(emotionDataList.get(0).index);
+        emotionToAllControlService(emotionDataList.get(0).index);
     }
 
+
+    private void emotionToAllControlService(int emotionIndex) {
+        // nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
+        for (int i = 0; i < emotionDeviceArray.length; i++) {
+            String device = emotionDeviceArray[i];
+            String colorString = "{ \"text\": \"" + device + "的灯调成" + emotionColorArray[emotionIndex] + "\", \"customInfo\": { \"deviceId\": \"1\" } }";
+            Log.d(TAG, "colorString:" + colorString);
+            remoteLightControlService.sendControlMessage(colorString, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "網路不通", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (null != response.cacheResponse()) {
+                        String str = response.cacheResponse().toString();
+
+                        Log.i(TAG, "cache network---" + str);
+
+                    } else {
+                        String str = response.body().string();
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+                        Log.d(TAG, "network---" + str);
+                    }
+
+                }
+            });
+        }
+
+    }
 
     private String emotionToControlService(int emotionIndex) {
         // nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
@@ -584,8 +628,8 @@ public class LightControlActivity extends AppCompatActivity {
             }
         });
         return colorString;
-    }
 
+    }
 
     private void initBtnColor() {
         LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

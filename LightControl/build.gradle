@@ -35,10 +35,19 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled false
             signingConfig signingConfigs.release
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                renameReleaseAPK(variant, 'release')
+            }
         }
+        debug {
+            android.applicationVariants.all { variant ->
+                renameDebugAPK(variant, 'debug')
+            }
+        }
+
     }
 
 
@@ -58,4 +67,30 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.6.0'
+}
+
+def renameReleaseAPK(variant, buildType) {
+    variant.outputs.each { output ->
+//        def formattedDate = new Date().format('yyyy_MM_dd_HH_mm')
+        def formattedDate = new Date().format('yyyy_MM_dd_HH')
+        def newName = output.outputFile.name
+        newName = newName.replace("app-", "EmotionLight-") //"MyAppName" -> I set my app variables in the root project
+        newName = newName.replace("-release", "-" + "v" + android.defaultConfig.versionName + "-"
+                + formattedDate + "-"
+                + buildType)
+        output.outputFileName = new File("./../../apk", newName);
+    }
+}
+
+def renameDebugAPK(variant, buildType) {
+    variant.outputs.each { output ->
+//        def formattedDate = new Date().format('yyyy_MM_dd_HH_mm')
+        def formattedDate = new Date().format('yyyy_MM_dd_HH')
+        def newName = output.outputFile.name
+        newName = newName.replace("app-", "EmotionLight-") //"MyAppName" -> I set my app variables in the root project
+        newName = newName.replace("-debug", "-" + "v" + android.defaultConfig.versionName + "-"
+                + formattedDate + "-"
+                + buildType)
+        output.outputFileName = new File("./../../apk", newName);
+    }
 }

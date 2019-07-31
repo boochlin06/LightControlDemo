@@ -106,27 +106,36 @@
         <item>@string/color_contempt</item>
         <item>@string/color_confuse</item>
     </string-array>
-
+    <string-array name="emotion_device_list">
+        <item>@string/device_living</item>
+        <item>@string/device_bedroom</item>
+        <item>@string/device_kitchen</item>
+        <item>@string/device_aisle</item>
+        <item>@string/device_study</item>
+        <item>@string/device_corridor</item>
+        <item>@string/device_corridor2</item>
+        <item>@string/device_balcony</item>
+        <item>@string/device_wash</item>
+    </string-array>
+    <string name="device_living">客厅</string>
+    <string name="device_bedroom">卧室</string>
+    <string name="device_kitchen">厨房</string>
+    <string name="device_aisle">过道</string>
+    <string name="device_study">书房</string>
+    <string name="device_corridor">走廊</string>
+    <string name="device_balcony">阳台</string>
+    <string name="device_wash">洗手间</string>
+    <string name="device_corridor2">楼道</string>
     <string name="color_angry">红色</string>
-        
     <string name="color_confuse">淡黄色</string>
-        
     <string name="color_contempt">紫棕色</string>
-        
     <string name="color_disgust">绿色</string>
-        
     <string name="color_fear">紫色</string>
-        
     <string name="color_happy">黄色</string>
-        
     <string name="color_sad">蓝色</string>
-        
     <string name="color_surprise">橘色</string>
-        
     <string name="color_neutral">蓝色</string>
-
     <string name="no_face_hint">請將臉部移至鏡頭內</string>
-
     <string name="title">智能情绪灯控</string>
 
     <string name="rawData_emotion_bar_summary">
