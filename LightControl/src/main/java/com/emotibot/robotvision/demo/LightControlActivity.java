@@ -620,9 +620,9 @@ public class LightControlActivity extends AppCompatActivity {
             txtBulbSignal.setText("ON");
         }
         if (emotionData[0] == 0 && emotionData[1] == 0) {
-//            emotionToAllControlService(6);
+            emotionToAllControlService(6);
         }else{
-//            emotionToAllControlService(emotionDataList.get(0).index);
+            emotionToAllControlService(emotionDataList.get(0).index);
         }
 
     }
