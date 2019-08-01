@@ -134,7 +134,7 @@
     <string name="color_happy">黄色</string>
     <string name="color_sad">蓝色</string>
     <string name="color_surprise">橘色</string>
-    <string name="color_neutral">蓝色</string>
+    <string name="color_neutral">白色</string>
     <string name="no_face_hint">請將臉部移至鏡頭內</string>
     <string name="title">智能情绪灯控</string>
 
