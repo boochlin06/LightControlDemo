@@ -229,7 +229,6 @@ public class LightControlActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    Log.d("MYTAG",editTextGap.getText().toString());
                     Long gap =  Long.parseLong(editTextGap.getText().toString());
                     if(gap>=1000 || gap<=30000){
                         LIGHT_CHANGE_GAP = gap;
