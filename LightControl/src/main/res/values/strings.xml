@@ -1,144 +1,144 @@
 <resources>
-    <string name="app_name">Huawei demo</string>
+        <string name="app_name">Huawei demo</string>
 
-    <string name="gaze_title">Gaze</string>
-    <string name="gaze_asleep">Asleep</string>
-    <string name="gaze_wake_up">Wake up</string>
-
-
-    <string name="emotion_title">Emotion</string>
-    <string name="emotion_error">Error</string>
-    <string name="emotion_angry">生氣</string>
-    <string name="emotion_disgust">厭惡</string>
-    <string name="emotion_happy">開心</string>
-    <string name="emotion_sad">傷心</string>
-    <string name="emotion_surprise">驚訝</string>
-    <string name="emotion_fear">恐懼</string>
-    <string name="emotion_neutral">中性</string>
-    <string name="emotion_contempt">鄙視</string>
-
-    <string name="emotion_confuse">困惑</string>
-
-    <string name="emotion_recording_result">Recording result</string>
+        <string name="gaze_title">Gaze</string>
+        <string name="gaze_asleep">Asleep</string>
+        <string name="gaze_wake_up">Wake up</string>
 
 
-    <string name="sadness_title">Sadness</string>
-    <string name="sadness_on">Show</string>
-    <string name="sadness_off"></string>
+        <string name="emotion_title">Emotion</string>
+        <string name="emotion_error">Error</string>
+        <string name="emotion_angry">生气</string>
+        <string name="emotion_disgust">厌恶</string>
+        <string name="emotion_happy">开心</string>
+        <string name="emotion_sad">伤心</string>
+        <string name="emotion_surprise">惊讶</string>
+        <string name="emotion_fear">恐惧</string>
+        <string name="emotion_neutral">中性</string>
+        <string name="emotion_contempt">鄙视</string>
+
+        <string name="emotion_confuse">困惑</string>
+
+        <string name="emotion_recording_result">Recording result</string>
 
 
-    <string name="threshold_str">%s(s)</string>
+        <string name="sadness_title">Sadness</string>
+        <string name="sadness_on">Show</string>
+        <string name="sadness_off"></string>
 
 
-    <string name="ok_btn">OK</string>
-    <string name="cancel_btn">CANCEL</string>
+        <string name="threshold_str">%s(s)</string>
 
 
-    <string name="setting_wakeup_threshold_title">WakeUp Threshold</string>
-    <string name="setting_sleep_threshold_title">Sleep Threshold</string>
+        <string name="ok_btn">OK</string>
+        <string name="cancel_btn">CANCEL</string>
 
 
-    <string name="emotion_threshold_angry">Angry</string>
-    <string name="emotion_threshold_disgust">Disgust</string>
-    <string name="emotion_threshold_happy">Happy</string>
-    <string name="emotion_threshold_sad">Sad</string>
-    <string name="emotion_threshold_surprise">Surprise</string>
-    <string name="emotion_threshold_fear">Fear</string>
-    <string name="emotion_threshold_neutral">Neutral</string>
+        <string name="setting_wakeup_threshold_title">WakeUp Threshold</string>
+        <string name="setting_sleep_threshold_title">Sleep Threshold</string>
 
 
-    <string name="take_happy_moment">Happy Moment</string>
-    <string name="take_picture">Take Picture</string>
-    <string name="start_recording_emotion">Record Emotion</string>
+        <string name="emotion_threshold_angry">Angry</string>
+        <string name="emotion_threshold_disgust">Disgust</string>
+        <string name="emotion_threshold_happy">Happy</string>
+        <string name="emotion_threshold_sad">Sad</string>
+        <string name="emotion_threshold_surprise">Surprise</string>
+        <string name="emotion_threshold_fear">Fear</string>
+        <string name="emotion_threshold_neutral">Neutral</string>
 
 
-    <string-array name="emotion_capture_spinner_array_list">
-        <item>@string/emotion_angry</item>
-        <item>@string/emotion_disgust</item>
-        <item>@string/emotion_happy</item>
-        <item>@string/emotion_sad</item>
-        <item>@string/emotion_surprise</item>
-        <item>@string/emotion_fear</item>
-        <item>@string/emotion_neutral</item>
-    </string-array>
-
-    <string name="attribute_title_gender">Gender</string>
-    <string name="attribute_title_age">Age</string>
-    <string name="attribute_title_beauty_score">Beauty</string>
-    <string name="attribute_title_beard">Beard</string>
-    <string name="attribute_title_hair_color">Hair color</string>
-    <string name="attribute_title_hair_style">Hair style</string>
-    <string name="attribute_title_hair_length">Hair length</string>
-    <string name="attribute_title_eyeglasses">Glasses</string>
+        <string name="take_happy_moment">Happy Moment</string>
+        <string name="take_picture">Take Picture</string>
+        <string name="start_recording_emotion">Record Emotion</string>
 
 
-    <string name="attribute_gender_man">Man</string>
-    <string name="attribute_gender_female">Female</string>
-    <string name="attribute_gender_unknown">Unknown</string>
+        <string-array name="emotion_capture_spinner_array_list">
+            <item>@string/emotion_angry</item>
+            <item>@string/emotion_disgust</item>
+            <item>@string/emotion_happy</item>
+            <item>@string/emotion_sad</item>
+            <item>@string/emotion_surprise</item>
+            <item>@string/emotion_fear</item>
+            <item>@string/emotion_neutral</item>
+        </string-array>
 
-    <string name="attribute_title_hair_color_bald">Bald</string>
-    <string name="attribute_title_hair_color_black">Black</string>
-    <string name="attribute_title_hair_color_blond">Blond</string>
-    <string name="attribute_title_hair_color_brown">Brown</string>
-    <string name="attribute_title_hair_color_gray">Gray</string>
+        <string name="attribute_title_gender">Gender</string>
+        <string name="attribute_title_age">Age</string>
+        <string name="attribute_title_beauty_score">Beauty</string>
+        <string name="attribute_title_beard">Beard</string>
+        <string name="attribute_title_hair_color">Hair color</string>
+        <string name="attribute_title_hair_style">Hair style</string>
+        <string name="attribute_title_hair_length">Hair length</string>
+        <string name="attribute_title_eyeglasses">Glasses</string>
 
-    <string name="attribute_title_hair_style_wavy">Wavy</string>
-    <string name="attribute_title_hair_style_straight">Straight</string>
 
-    <string name="attribute_title_hair_length_no_hair">No hair</string>
-    <string name="attribute_title_hair_length_short">Short</string>
-    <string name="attribute_title_hair_length_middle">Middle</string>
-    <string name="attribute_title_hair_length_long">Long</string>
+        <string name="attribute_gender_man">Man</string>
+        <string name="attribute_gender_female">Female</string>
+        <string name="attribute_gender_unknown">Unknown</string>
 
-    <string name="attribute_other">Other</string>
+        <string name="attribute_title_hair_color_bald">Bald</string>
+        <string name="attribute_title_hair_color_black">Black</string>
+        <string name="attribute_title_hair_color_blond">Blond</string>
+        <string name="attribute_title_hair_color_brown">Brown</string>
+        <string name="attribute_title_hair_color_gray">Gray</string>
 
-    <!--nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused-->
+        <string name="attribute_title_hair_style_wavy">Wavy</string>
+        <string name="attribute_title_hair_style_straight">Straight</string>
 
-    <!--follow emotion module output order-->
-    <string-array name="emotion_color_list">
-        <item>@string/color_angry</item>
-        <item>@string/color_disgust</item>
-        <item>@string/color_happy</item>
-        <item>@string/color_sad</item>
-        <item>@string/color_surprise</item>
-        <item>@string/color_fear</item>
-        <item>@string/color_neutral</item>
-        <item>@string/color_contempt</item>
-        <item>@string/color_confuse</item>
-    </string-array>
-    <string-array name="emotion_device_list">
-        <item>@string/device_living</item>
-        <item>@string/device_bedroom</item>
-        <item>@string/device_kitchen</item>
-        <item>@string/device_aisle</item>
-        <item>@string/device_study</item>
-        <item>@string/device_corridor</item>
-        <item>@string/device_corridor2</item>
-        <item>@string/device_balcony</item>
-        <item>@string/device_wash</item>
-    </string-array>
-    <string name="device_living">客厅</string>
-    <string name="device_bedroom">卧室</string>
-    <string name="device_kitchen">厨房</string>
-    <string name="device_aisle">过道</string>
-    <string name="device_study">书房</string>
-    <string name="device_corridor">走廊</string>
-    <string name="device_balcony">阳台</string>
-    <string name="device_wash">洗手间</string>
-    <string name="device_corridor2">楼道</string>
-    <string name="color_angry">红色</string>
-    <string name="color_confuse">淡黄色</string>
-    <string name="color_contempt">紫棕色</string>
-    <string name="color_disgust">绿色</string>
-    <string name="color_fear">紫色</string>
-    <string name="color_happy">黄色</string>
-    <string name="color_sad">蓝色</string>
-    <string name="color_surprise">橘色</string>
-    <string name="color_neutral">白色</string>
-    <string name="no_face_hint">請將臉部移至鏡頭內</string>
-    <string name="title">智能情绪灯控</string>
+        <string name="attribute_title_hair_length_no_hair">No hair</string>
+        <string name="attribute_title_hair_length_short">Short</string>
+        <string name="attribute_title_hair_length_middle">Middle</string>
+        <string name="attribute_title_hair_length_long">Long</string>
 
-    <string name="rawData_emotion_bar_summary">
+        <string name="attribute_other">Other</string>
+
+        <!--nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused-->
+
+        <!--follow emotion module output order-->
+        <string-array name="emotion_color_list">
+            <item>@string/color_angry</item>
+            <item>@string/color_disgust</item>
+            <item>@string/color_happy</item>
+            <item>@string/color_sad</item>
+            <item>@string/color_surprise</item>
+            <item>@string/color_fear</item>
+            <item>@string/color_neutral</item>
+            <item>@string/color_contempt</item>
+            <item>@string/color_confuse</item>
+        </string-array>
+        <string-array name="emotion_device_list">
+            <item>@string/device_living</item>
+            <item>@string/device_bedroom</item>
+            <item>@string/device_kitchen</item>
+            <item>@string/device_aisle</item>
+            <item>@string/device_study</item>
+            <item>@string/device_corridor</item>
+            <item>@string/device_corridor2</item>
+            <item>@string/device_balcony</item>
+            <item>@string/device_wash</item>
+        </string-array>
+        <string name="device_living">客厅</string>
+        <string name="device_bedroom">卧室</string>
+        <string name="device_kitchen">厨房</string>
+        <string name="device_aisle">过道</string>
+        <string name="device_study">书房</string>
+        <string name="device_corridor">走廊</string>
+        <string name="device_balcony">阳台</string>
+        <string name="device_wash">洗手间</string>
+        <string name="device_corridor2">楼道</string>
+        <string name="color_angry">红色</string>
+        <string name="color_confuse">淡黄色</string>
+        <string name="color_contempt">紫棕色</string>
+        <string name="color_disgust">绿色</string>
+        <string name="color_fear">紫色</string>
+        <string name="color_happy">黄色</string>
+        <string name="color_sad">蓝色</string>
+        <string name="color_surprise">橘色</string>
+        <string name="color_neutral">白色</string>
+        <string name="no_face_hint">请将脸部移至镜头内</string>
+        <string name="title">智能情绪灯控</string>
+
+        <string name="rawData_emotion_bar_summary">
 Angry:%1.2f\n
 Disgust:%2.2f\n
 Happy:%3.2f\n
@@ -149,7 +149,7 @@ Neutral:%7.2f\n
 Contempt:%8.2f\n
 Confused:%9.2f\n
     </string>
-    <string name="btn_emotion_rank">情绪排行</string>
-    <string name="btn_emotion_detail">全部情绪</string>
+        <string name="btn_emotion_rank">情绪排行</string>
+        <string name="btn_emotion_detail">全部情绪</string>
 
 </resources>
