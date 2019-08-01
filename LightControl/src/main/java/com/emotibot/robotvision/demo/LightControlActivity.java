@@ -1,6 +1,7 @@
 package com.emotibot.robotvision.demo;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,11 +9,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -178,6 +183,8 @@ public class LightControlActivity extends AppCompatActivity {
     TextView txtScoreNeutral;
     @BindView(R.id.txtTitle)
     TextView txtTitle;
+    @BindView(R.id.editTextGap)
+    EditText editTextGap;
 
     private Mat mCameraBuffer = null;
 
@@ -186,10 +193,14 @@ public class LightControlActivity extends AppCompatActivity {
     private String[] emotionDeviceArray;
     private RemoteLightControlService remoteLightControlService;
 
-    public static final long LIGHT_CHANGE_GAP = 10000;
+    public long LIGHT_CHANGE_GAP = 10000;
+    public static final long COLLECT_EMOTION_GAP = 100;
+    public static final long AVERAGE_EMOTION_WINDOW_SIZE = 10;
 
     private long prevProcessorTime = 0;
+    private long prevCollectTime = 0;
     private List<EmotionData> emotionDataList;
+    private EmotionAverager mEmotionAverager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -207,12 +218,28 @@ public class LightControlActivity extends AppCompatActivity {
         stringBuilder = new StringBuilder();
         mCameraView = (JavaCameraView) findViewById(R.id.camera_impl);
         emotionDataList = new ArrayList<>();
+        mEmotionAverager = new EmotionAverager();
 
         initBtnColor();
         IntelliEyeCoreManager.getInstance().init(this, false, true, false, false, false);
         mCameraView.setCvCameraViewListener(new CameraFrameProcessor());
         showEmotionNormalView();
 //        btnBlock.setVisibility(View.VISIBLE);
+        editTextGap.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    Log.d("MYTAG",editTextGap.getText().toString());
+                    Long gap =  Long.parseLong(editTextGap.getText().toString());
+                    if(gap>=1000 || gap<=30000){
+                        LIGHT_CHANGE_GAP = gap;
+                        hideKeyboard(LightControlActivity.this);
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @OnClick({R.id.btnLeftChange, R.id.btnRightChange})
@@ -319,18 +346,65 @@ public class LightControlActivity extends AppCompatActivity {
 
             final InferResult mInferResult = IntelliEyeCoreManager.getInstance().processFrame(mCameraBuffer, cameraFrame
                     , true);
+            if (System.currentTimeMillis() - prevCollectTime > COLLECT_EMOTION_GAP) {
+                prevCollectTime = System.currentTimeMillis();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mEmotionAverager.pushData(mInferResult.getEmotionData());
+                    }
+                });
+            }
             if (System.currentTimeMillis() - prevProcessorTime > LIGHT_CHANGE_GAP) {
                 prevProcessorTime = System.currentTimeMillis();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        updateEmotionView(mInferResult.getEmotionData());
+                        updateEmotionView(mEmotionAverager.getAverage());
                     }
                 });
             }
 //            Log.d(TAG, "total process time:" + (System.currentTimeMillis() - startTime));
             return cameraFrame;
         }
+    }
+
+    class EmotionAverager{
+        private ArrayList<float []> dataList;
+
+        public EmotionAverager(){
+            dataList = new ArrayList<float []>();
+        }
+        public void pushData(float[] data){
+            dataList.add(data);
+            if(dataList.size()>AVERAGE_EMOTION_WINDOW_SIZE){
+                dataList.remove(0);
+            }
+        }
+
+        public float[] getAverage(){
+            float[] sum = dataList.get(0);
+            for(int i=1;i<dataList.size();i++){
+                float [] tmp = dataList.get(i);
+                for(int j=0;j<sum.length;j++){
+                    sum[j] += tmp[j];
+                }
+            }
+            for(int j=0;j<sum.length;j++){
+                sum[j] = sum[j]/dataList.size();
+            }
+            return  sum;
+        }
+    }
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     class EmotionData implements Comparable<EmotionData> {
@@ -545,13 +619,22 @@ public class LightControlActivity extends AppCompatActivity {
             }
             txtBulbSignal.setText("ON");
         }
-        emotionToAllControlService(emotionDataList.get(0).index);
+        if (emotionData[0] == 0 && emotionData[1] == 0) {
+//            emotionToAllControlService(6);
+        }else{
+//            emotionToAllControlService(emotionDataList.get(0).index);
+        }
+
     }
 
     private void emotionToAllControlService(int emotionIndex) {
         // nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
         String colorString = "{ \"text\": \"" + "全部的灯调成" + emotionColorArray[emotionIndex] + "\", \"customInfo\": { \"deviceId\": \"1\" } }";
+        if(emotionIndex == 6){
+            colorString = "{ \"text\": \"" + "关闭全部的灯" + "\", \"customInfo\": { \"deviceId\": \"1\" } }";;
+        }
         Log.d(TAG, "colorString:" + colorString);
+        String finalColorString = colorString;
         remoteLightControlService.sendControlMessage(colorString, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -575,7 +658,7 @@ public class LightControlActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), colorString, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), finalColorString, Toast.LENGTH_LONG).show();
 
                         }
                     });

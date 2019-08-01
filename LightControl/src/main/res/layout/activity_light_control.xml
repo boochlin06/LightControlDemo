@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true">
 
     <org.opencv.android.JavaCameraView xmlns:opencv="http://schemas.android.com/apk/res-auto"
         android:id="@+id/camera_impl"
@@ -855,4 +856,19 @@
         android:layout_marginTop="0dp"
         android:visibility="gone"
         app:srcCompat="@drawable/company_logo" />
+
+
+
+
+    <EditText
+        android:id="@+id/editTextGap"
+        android:layout_width="400dp"
+        android:layout_height="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:background="@color/md_white_1000"
+        android:imeOptions="actionSend"
+        android:hint="輸入燈光變色間隔(1000~30000毫秒)"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
 </RelativeLayout>
