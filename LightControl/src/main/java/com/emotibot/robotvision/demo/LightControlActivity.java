@@ -229,8 +229,8 @@ public class LightControlActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    Long gap =  Long.parseLong(editTextGap.getText().toString());
-                    if(gap>=1000 || gap<=30000){
+                    Long gap = Long.parseLong(editTextGap.getText().toString());
+                    if (gap >= 1000 || gap <= 30000) {
                         LIGHT_CHANGE_GAP = gap;
                         hideKeyboard(LightControlActivity.this);
                     }
@@ -239,6 +239,7 @@ public class LightControlActivity extends AppCompatActivity {
                 return false;
             }
         });
+//        Log.d("tests,", getResources().getDisplayMetrics().toString());
     }
 
     @OnClick({R.id.btnLeftChange, R.id.btnRightChange})
@@ -368,33 +369,35 @@ public class LightControlActivity extends AppCompatActivity {
         }
     }
 
-    class EmotionAverager{
-        private ArrayList<float []> dataList;
+    class EmotionAverager {
+        private ArrayList<float[]> dataList;
 
-        public EmotionAverager(){
-            dataList = new ArrayList<float []>();
+        public EmotionAverager() {
+            dataList = new ArrayList<float[]>();
         }
-        public void pushData(float[] data){
+
+        public void pushData(float[] data) {
             dataList.add(data);
-            if(dataList.size()>AVERAGE_EMOTION_WINDOW_SIZE){
+            if (dataList.size() > AVERAGE_EMOTION_WINDOW_SIZE) {
                 dataList.remove(0);
             }
         }
 
-        public float[] getAverage(){
+        public float[] getAverage() {
             float[] sum = dataList.get(0);
-            for(int i=1;i<dataList.size();i++){
-                float [] tmp = dataList.get(i);
-                for(int j=0;j<sum.length;j++){
+            for (int i = 1; i < dataList.size(); i++) {
+                float[] tmp = dataList.get(i);
+                for (int j = 0; j < sum.length; j++) {
                     sum[j] += tmp[j];
                 }
             }
-            for(int j=0;j<sum.length;j++){
-                sum[j] = sum[j]/dataList.size();
+            for (int j = 0; j < sum.length; j++) {
+                sum[j] = sum[j] / dataList.size();
             }
-            return  sum;
+            return sum;
         }
     }
+
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -620,7 +623,7 @@ public class LightControlActivity extends AppCompatActivity {
         }
         if (emotionData[0] == 0 && emotionData[1] == 0) {
             emotionToAllControlService(6);
-        }else{
+        } else {
             emotionToAllControlService(emotionDataList.get(0).index);
         }
 
@@ -629,8 +632,9 @@ public class LightControlActivity extends AppCompatActivity {
     private void emotionToAllControlService(int emotionIndex) {
         // nine emotion 0 angry 1 disgust 2 happy 3 sad 4 surprise 5 fear 6 neutral 7 contempt 8 confused
         String colorString = "{ \"text\": \"" + "全部的灯调成" + emotionColorArray[emotionIndex] + "\", \"customInfo\": { \"deviceId\": \"1\" } }";
-        if(emotionIndex == 6){
-            colorString = "{ \"text\": \"" + "关闭全部的灯" + "\", \"customInfo\": { \"deviceId\": \"1\" } }";;
+        if (emotionIndex == 6) {
+            colorString = "{ \"text\": \"" + "关闭全部的灯" + "\", \"customInfo\": { \"deviceId\": \"1\" } }";
+            ;
         }
         Log.d(TAG, "colorString:" + colorString);
         String finalColorString = colorString;
