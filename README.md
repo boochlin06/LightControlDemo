@@ -1,59 +1,69 @@
 # LightControl (Emotion Light)
 
-LightControl 是一個基於 Android 平台的智慧燈控展示應用（Demo App），它能夠透過裝置鏡頭捕捉使用者的臉部表情，進行即時的情緒分析，並根據辨識出的情緒狀態自動改變智慧燈泡的顏色，達到「情緒燈光」的互動體驗。
+LightControl 是一個基於 Android 平台的智慧 IoT 燈控展示應用（Demo App），結合邊緣運算的人臉情緒辨識，並將使用者的即時情緒狀態轉化為實體的智慧燈光顏色。
 
-## 功能介紹 (Features)
+---
 
-*   **即時情緒辨識 (Real-time Emotion Recognition)**：
-    *   使用裝置前置或後置鏡頭擷取即時影像。
-    *   支援辨識 9 種不同的情緒狀態：憤怒 (Angry)、厭惡 (Disgust)、開心 (Happy)、悲傷 (Sad)、驚訝 (Surprise)、恐懼 (Fear)、平靜 (Neutral)、蔑視 (Contempt)、困惑 (Confused)。
-*   **智慧燈光連動 (Smart Light Control)**：
-    *   根據偵測到的主要情緒，將燈光調整為對應的顏色。例如：生氣可能對應紅色，開心對應粉紅色等。
-    *   當未偵測到臉部或情緒為平靜時，支援自動關閉燈光或保持預設狀態。
-*   **情緒數值平滑化 (Emotion Smoothing)**：
-    *   實作 `EmotionAverager`，透過滑動視窗 (Sliding Window) 計算情緒平均值，避免因單一影格的誤判造成燈光頻繁閃爍，提供更穩定的體驗。
-*   **手動/細部控制 (Manual Override)**：
-    *   提供手動介面，讓使用者可以點擊按鈕直接發送指定顏色的燈光控制指令。
-    *   提供詳細的各項情緒信心分數顯示面板。
+## 程式功能分析 (Program Feature Analysis)
 
-## 軟體開發架構 (Software Architecture)
+專案主要涵蓋三個功能核心：
 
-本專案採用傳統的 Android MVC/MVP 混合架構，並高度依賴第三方視覺與網路通訊套件：
+1. **即時臉部情緒擷取與推論**
+   * 透過 OpenCV (`JavaCameraView`) 擷取相機的即時影像串流。
+   * 將影像傳遞給 Emotibot 的核心視覺引擎 (`IntelliEyeCoreManager`) 進行人臉追蹤與情緒辨識。
+   * 支援 9 種情緒輸出：憤怒、厭惡、開心、悲傷、驚訝、恐懼、平靜、蔑視、困惑。
 
-### 核心模組
+2. **智慧燈光控制邏輯**
+   * 每隔一段時間（預設 10 秒，可透過 UI 動態調整）將計算出的「最高分情緒」轉換為對應的燈光顏色。
+   * 透過 RESTful API (OkHttp / Retrofit) 非同步發送 JSON 格式指令（如 `{ "text": "全部的灯调成红色" }`）至 IoT 伺服器，進而控制實體燈泡。
+   * 若無偵測到人臉或情緒以「平靜」為主，則發送關閉指令。
 
-1.  **UI/Presentation Layer (展示層)**：
-    *   `LightControlActivity`：應用程式的主要與唯一入口，負責管理 Camera Preview、UI 元件的綁定與更新，以及使用者操作。
-    *   **View Binding**：使用 [ButterKnife](http://jakewharton.github.io/butterknife/) 進行 UI 元件綁定，減少 `findViewById` 的樣板程式碼。
-2.  **Vision & Emotion Engine (視覺與情緒引擎)**：
-    *   **OpenCV**：整合了 `JavaCameraView` 與 `opencv_java3` 函式庫，負責高效率的即時影像串流捕捉與色彩空間轉換 (RGBA to BGR)。
-    *   **IntelliEyeCore**：使用 Emotibot 提供的專屬 SDK (`IntelliEyeCoreManager`) 進行核心的臉部偵測與情緒推論，並回傳包含 9 種情緒分數的 `InferResult`。
-3.  **Network & Control Layer (網路與控制層)**：
-    *   `RemoteLightControlService`：負責將 UI 決定好的情緒轉換成燈控指令（例如 JSON 格式：`{ "text": "全部的灯调成红色", "customInfo": { "deviceId": "1" } }`）。
-    *   **OkHttp3**：作為底層網路通訊客戶端，以非同步 (Asynchronous) 的方式發送 HTTP 請求給 IoT 伺服器或直接發送給智慧燈泡控制器。
+3. **情緒數值平滑化與 UI 呈現**
+   * **平滑處理**：為了防止因為單一影格 (Frame) 誤判導致燈光頻繁閃爍，系統將連續蒐集的情緒分數存入滑動視窗 (Sliding Window) 計算平均值。
+   * **豐富的儀表板**：UI 動態排序並顯示 Top 5 情緒的分數與直條圖，提供使用者視覺化的反饋；同時也保留了手動點擊顏色區塊直接控制燈光的功能。
 
-### 開發環境與依賴
+---
 
-*   **Min SDK Version**: 19 (Android 4.4 KitKat)
-*   **Target SDK Version**: 24 (Android 7.0 Nougat)
-*   **核心套件**:
-    *   `org.opencv:opencv-android` (v3.2.0)
-    *   `com.emotibot:IntelliEyeCore` / `dlib-debug` (Emotion Inference)
-    *   `com.squareup.okhttp3:okhttp` (Networking)
-    *   `com.jakewharton:butterknife` (View Injection)
+## 檔案與目錄結構 (Directory Structure)
 
-### 目錄結構 (Directory Structure)
+```text
+LightControl/
+├── src/main/
+│   ├── AndroidManifest.xml          # 應用程式配置與權限聲明（相機、網路）
+│   ├── java/com/emotibot/robotvision/demo/
+│   │   ├── LightControlActivity.java        # 核心 Controller，負責 UI 綁定、相機生命週期、情緒平均演算法
+│   │   ├── RemoteLightControlService.java   # 負責將情緒控制指令封裝並透過網路 (OkHttp) 傳送至 IoT 伺服器
+│   │   └── LightControlService.java         # Retrofit API 介面定義
+│   └── res/                         # Android 資源檔 (Layout XML, Drawable 圖片, 字串資源)
+├── libs/                            # 依賴的 AAR 套件 (OpenCV, IntelliCore, dlib)
+├── build.gradle                     # App 模組的建置設定與依賴管理
+└── proguard-rules.pro               # ProGuard 混淆規則
+```
 
-*   `LightControl/`：主要專案資料夾（Android App 原始碼與資源檔）。
-    *   `src/main/java/`：Java 原始碼（UI、情緒計算與網路服務）。
-    *   `src/main/res/`：Android 資源檔（版面佈局、圖片與字串）。
-    *   `libs/`：依賴的 `.aar` 檔案（OpenCV, IntelliCore 等）。
-    *   `build.gradle`：App 層級的 Gradle 建置設定檔。
-*   `build.gradle` / `settings.gradle`：專案層級的 Gradle 設定檔。
+---
 
+## 使用到的 Design Pattern
 
-## 執行與編譯
+在本專案的實作中，運用了以下幾種常見的設計模式與架構模式：
 
-1.  請確保有正確安裝 Android SDK 以及 NDK (若 OpenCV 有原生依賴)。
-2.  專案根目錄執行 `./gradlew build` 或直接透過 Android Studio 開啟專案進行編譯與安裝。
-3.  請授權 App 相機 (`CAMERA`) 與網路 (`INTERNET`) 存取權限。
+1. **Singleton Pattern (單例模式)**
+   * `RemoteLightControlService` 實作了具有 Double-Checked Locking 的 Thread-safe 單例模式，確保整個 App 生命週期中只維護一個網路請求實例。
+   * SDK 內部的 `IntelliEyeCoreManager` 也採用單例模式管理生命週期。
+2. **Observer / Listener Pattern (觀察者 / 監聽者模式)**
+   * **相機資料流**：實作 `CameraBridgeViewBase.CvCameraViewListener2` 來非同步接收 OpenCV 相機的每一幀 (Frame) 影像。
+   * **網路回呼**：使用 OkHttp / Retrofit 的 `Callback` 介面，當 HTTP Request 完成或失敗時，非同步觸發 UI 執行緒的 Toast 通知。
+3. **MVC / MVP 架構 (Architecture Pattern)**
+   * 採用傳統的 Android 開發架構，以 `LightControlActivity` 作為主控台 (Controller)，負責協調 Model (`InferResult` / `EmotionData`) 與 View (XML Layouts)。
+
+---
+
+## 專案亮點介紹 (Highlights)
+
+* ✨ **邊緣運算與 IoT 的完美結合**
+  * 在終端設備（手機/平板）上直接運行高複雜度的視覺推論，避免了將影像即時上傳雲端造成的延遲與隱私問題。推論出結果後再發送極小量的控制指令給 IoT 伺服器，達到極高的反應速度。
+* 🛡 **情緒平滑演算法 (Sliding Window Average)**
+  * 自行封裝 `EmotionAverager` 內部類別。在連續的影像幀中，保留固定大小的歷史分數進行平均計算。這種「Low-pass filter（低通濾波）」的設計大幅降低了雜訊干擾，使得燈光變化如人類情緒一樣平緩流暢。
+* 🎨 **動態資料驅動的 UI 渲染**
+  * 實作了可比較的 `EmotionData` 模型，每一次計算後會重新針對 9 種情緒的分數進行排序 (`Collections.sort`)，動態更新 UI 上的前五大情緒指標，使得畫面互動性十足。
+* ⚡️ **View Binding 的優雅實作**
+  * 導入 `ButterKnife` 取代大量冗長的 `findViewById` 與 `setOnClickListener`，使得超過 800 行的 `LightControlActivity` 依然能保持視圖綁定程式碼的整潔與好維護。
