@@ -16,7 +16,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 24            // sync with opencv 3.2 androidmanifest.xml
         versionCode 2
-        versionName "1.0.1"
+        versionName "1.0.2"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
