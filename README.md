@@ -42,6 +42,16 @@ LightControl 是一個基於 Android 平台的智慧燈控展示應用（Demo Ap
     *   `com.squareup.okhttp3:okhttp` (Networking)
     *   `com.jakewharton:butterknife` (View Injection)
 
+### 目錄結構 (Directory Structure)
+
+*   `LightControl/`：主要專案資料夾（Android App 原始碼與資源檔）。
+    *   `src/main/java/`：Java 原始碼（UI、情緒計算與網路服務）。
+    *   `src/main/res/`：Android 資源檔（版面佈局、圖片與字串）。
+    *   `libs/`：依賴的 `.aar` 檔案（OpenCV, IntelliCore 等）。
+    *   `build.gradle`：App 層級的 Gradle 建置設定檔。
+*   `build.gradle` / `settings.gradle`：專案層級的 Gradle 設定檔。
+
+
 ## 執行與編譯
 
 1.  請確保有正確安裝 Android SDK 以及 NDK (若 OpenCV 有原生依賴)。
